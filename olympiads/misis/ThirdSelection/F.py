@@ -1,7 +1,9 @@
 import heapq
 
+
 def f(a, c):
     return [a[i][c] for i in range(len(a))]
+
 
 def dijkstra(n, graph):
     dist = [float("inf")] * n
@@ -30,7 +32,7 @@ for _ in range(int(input())):
         u, v, w = map(int, input().split())
         graph[u - 1].append((v - 1, w))
         graph[v - 1].append((u - 1, w))
-    
+
     for i in range(n):
         for j in range(n):
             if j not in f(graph[i], 0):
@@ -41,4 +43,4 @@ for _ in range(int(input())):
     print(" ".join(map(str, dist)))
 
 
-# не отправил, идет все к черту на подспорье! 
+# На дорешке 2 тест неправильный ответ xD
