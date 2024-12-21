@@ -102,6 +102,7 @@ def k_medoids(points, k):
         if set(new_medoids) == set(medoids):
             break
         medoids = new_medoids
+    print(medoids)
     return medoids
 
 
