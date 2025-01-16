@@ -38,9 +38,9 @@ private:
     std::vector<int> rank;
 };
 
-
-class SegmentTree {
+class SegmentTree{
 private:
+    int n;
     vector<int> arr;
     vector<int> tree;
 
@@ -48,42 +48,50 @@ private:
         if (tl == tr) {
             tree[v] = arr[tl];
         } else {
-            int tm = (tl + tr) / 2;
+            int tm = tl + (tr - tl) / 2;
             build(2 * v, tl, tm);
             build(2 * v + 1, tm + 1, tr);
             tree[v] = tree[2 * v] + tree[2 * v + 1];
         }
     }
-
 public:
-    SegmentTree(const vector<int>& inputArr) {
-        arr = inputArr;
-        tree.resize(4 * arr.size());
+    // vector<int> tree;
+    SegmentTree(const vector<int> &InputArr){
+        n = InputArr.size();
+        arr = InputArr;
+        tree.resize(4 * n);
         build(1, 0, arr.size() - 1);
     }
 
-    int query(int v, int tl, int tr, int l, int r) {
-        if (l > r) {
-            return 0;
+    void update(int v, int tl, int tr, int pos, int x){
+        tree[v] += x; // Любая операция
+        if (tl == tr){
+            // tree[v] = x;
+            return;
         }
-        if (l == tl && r == tr) {
-            return tree[v];
+        int tm = tl + (tr - tl) / 2;
+        if (pos < tm){
+            update(2 * v, tl, tm, pos, x);
         }
-        int tm = (tl + tr) / 2;
-        return query(2 * v, tl, tm, l, min(r, tm)) + query(2 * v + 1, tm + 1, tr, max(l, tm + 1), r);
+        else{
+            update(2 * v + 1, tm + 1, tr, pos, x);
+        }
+        // tree[v] = tree[2 * v] + tree[2 * v + 1];
     }
 
-    void update(int v, int tl, int tr, int pos, int newVal) {
-        if (tl == tr) {
-            tree[v] = newVal;
-        } else {
-            int tm = (tl + tr) / 2;
-            if (pos <= tm) {
-                update(2 * v, tl, tm, pos, newVal);
-            } else {
-                update(2 * v + 1, tm + 1, tr, pos, newVal);
-            }
-            tree[v] = tree[2 * v] + tree[2 * v + 1];
+    int getSum(int v, int tl, int tr, int l, int r){
+        if (tl == l && tr == r){
+            return tree[v];
         }
+        cout << v;
+        int result = 0;
+        int tm = tl + (tr - tl) / 2;
+        if (l <= tm){
+            result += getSum(2 * v, tl, tm, l, min(r, tm)); // Любая операция
+        }
+        if (r > tm){
+            result += getSum(2 * v + 1, tm + 1, tr, max(l, tm + 1), r); // Любая операция
+        }
+        return result;
     }
 };

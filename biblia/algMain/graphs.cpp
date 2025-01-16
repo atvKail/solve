@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <bits\stdc++.h>
 
 using namespace std;
 
@@ -11,10 +11,16 @@ public:
     Graph(int V);
     void addEdge(int src, int dest);
     void DFS(int vertex);
+    void DFS_WithoutRecursion(int vertex);
     void BFS(int startVertex);
+    void ClearVisited();
 };
 
 Graph::Graph(int vertices) : numVertices(vertices), adjLists(vertices), visited(vertices, false) {}
+
+void Graph::ClearVisited() {
+    fill(visited.begin(), visited.end(), false);
+}
 
 void Graph::addEdge(int src, int dest) {
     adjLists[src].push_back(dest); // Use push_back for better performance in most cases
@@ -30,6 +36,28 @@ void Graph::DFS(int vertex) {
         }
     }
 }
+
+void Graph::DFS_WithoutRecursion(int vertex) {
+    stack<int> stack;
+    stack.push(vertex);
+
+    while (!stack.empty()) {
+        int current = stack.top();
+        stack.pop();
+
+        if (!visited[current]) {
+            cout << current << " ";
+            visited[current] = true;
+        }
+
+        for (int neighbor : adjLists[current]) {
+            if (!visited[neighbor]) {
+                stack.push(neighbor);
+            }
+        }
+    }
+}
+
 
 void Graph::BFS(int startVertex) {
     fill(visited.begin(), visited.end(), false); // Reset visited for BFS
@@ -105,7 +133,13 @@ int main() {
 
     cout << "DFS starting from vertex 2:\n";
     g.DFS(2);
+
+    cout << "\nDFS_WithoutRecursion starting from vertex 2:\n";
+    g.ClearVisited();
+    g.DFS_WithoutRecursion(2);
+
     cout << "\nBFS starting from vertex 2:\n";
+    g.ClearVisited();
     g.BFS(2);
 
     WeightedGraph wg(4);
