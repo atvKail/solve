@@ -242,6 +242,7 @@ class AlgorithmsForGraphs{
     // int node_count  = 3;
     // int source_node = 1;
     // DijkstrasShortestPath(source_node, node_count, graph);
+    const int INT_MAX = 1 << 11;
     void DijkstrasShortestPath (int source_node, int node_count, VVPII& graph) {
         const int INF = INT_MAX;
         vector<unsigned int> dist(node_count, INF);
