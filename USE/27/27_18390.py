@@ -125,8 +125,8 @@ def process_file(file_name):
 
 if __name__ == "__main__":
     # Обработка файлов A и B
-    result_a_x, result_a_y = process_file("USE/27/27_A_18390.txt")
-    result_b_x, result_b_y = process_file("USE/27/27_B_18390.txt")
+    result_a_x, result_a_y = process_file("USE/27/data/27_A_18390.txt")
+    result_b_x, result_b_y = process_file("USE/27/data/27_B_18390.txt")
 
     # Вывод результата
     print(result_a_x, result_a_y)
