@@ -167,3 +167,7 @@ result_B = find_max_segment_B(data_B)
 # Вывод результатов
 print(f"{result_A[0]} {result_A[1]}")
 print(f"{result_B[0]} {result_B[1]}")
+
+
+
+# Неверно сделан
