@@ -106,13 +106,13 @@ class NumberMath:
 
 
 class sorting:  # Сортировки
-    def merge_sorting(arr):  # Сортировка_Слиянием
+    def merge_sorting(arr, key=lambda a, b: a >= b):  # Сортировка_Слиянием
         def merge(a, b):
             res = []
             i = 0
             j = 0
             while i < len(a) and j < len(b):
-                if a[i] >= b[j]:
+                if key(a[i], b[j]):
                     res.append(a[i])
                     i += 1
                 else:
@@ -129,6 +129,7 @@ class sorting:  # Сортировки
             return merge(msort(a[:k]), msort(a[k:]))
 
         return msort(arr)
+
 
     def counting_sort(a):  # Сортировка_подсчётом
         cnt = [0] * 10
