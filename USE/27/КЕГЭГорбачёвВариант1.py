@@ -83,7 +83,7 @@ def solve(files_pathes):
 
 if __name__ == "__main__":
     files_pathes = [
-        "USE\\27\\КЕГЭГорбачёвВариант1\\27A_18157.txt", 
-        "USE\\27\\КЕГЭГорбачёвВариант1\\27B_18157.txt"
+        "USE\\27\\data\\27A_18157.txt", 
+        "USE\\27\\data\\27B_18157.txt"
     ]
     solve(files_pathes)
