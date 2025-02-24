@@ -31,3 +31,4 @@ if __name__ == "__main__":
     print(matcher.isMatch("aa", "a"))  # False
     print(matcher.isMatch("aa", "a*"))  # True
     print(matcher.isMatch("ab", ".*"))  # True
+    
