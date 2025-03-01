@@ -130,7 +130,6 @@ class sorting:  # Сортировки
 
         return msort(arr)
 
-
     def counting_sort(a):  # Сортировка_подсчётом
         cnt = [0] * 10
         for el in a:
@@ -188,6 +187,46 @@ class graphWork:
                     space.append(neighbour)
         return space
         # graph = {0: [1, 2], 1: [2], 2: [3], 3: [1, 2]}
+
+    def find_eulerian_path(graph):
+        odd_degree = [v for v in graph if len(graph[v]) % 2 == 1]
+
+        if len(odd_degree) not in (0, 2):
+            return None
+
+        start = odd_degree[0] if odd_degree else next(iter(graph))
+
+        graph_copy = {v: list(adj) for v, adj in graph.items()}
+
+        stack = [start]
+        path = []
+
+        while stack:
+            v = stack[-1]
+            if graph_copy[v]:
+                u = graph_copy[v].pop()
+
+                graph_copy[u].remove(v)
+                stack.append(u)
+            else:
+                path.append(stack.pop())
+
+        return path[::-1]
+
+    # if __name__ == "__main__":
+    #     graph = {
+    #         "A": ["B", "C"],
+    #         "B": ["A", "C", "D"],
+    #         "C": ["A", "B", "D"],
+    #         "D": ["B", "C"],
+    #     }
+
+    #     euler_path = find_eulerian_path(graph)
+    #     if euler_path:
+    #         print("Эйлеров обход:", " -> ".join(euler_path))
+    #     else:
+    #         print("Эйлеров обход в данном графе не существует.")
+
 
     def dijkstra(graph, start, n):
         import heapq
