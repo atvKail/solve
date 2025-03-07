@@ -28,6 +28,6 @@ class Exercise24:
         return max_length
 
 
-ex24 = Exercise24(filename="USE\\kEGE24_25\\Gorbachev3v\\24.txt", target_A_count=22, forbidden_symbol="F")
+ex24 = Exercise24(filename="USE\\ПолноценноеРешениеВариантов\\kEGE24_25\\Gorbachev3v\\24.txt", target_A_count=22, forbidden_symbol="F")
 print("Задание 24:")
 print(ex24.sol())

@@ -2,7 +2,7 @@ def is_good(x):
     return (x % 11 == 0) and (abs(x) % 10 == 3)
 
 numbers = []
-with open("USE\\kEGE24_25\\Gorbachev3v\\17.txt", 'r', encoding=None) as f:
+with open("USE\\ПолноценноеРешениеВариантов\\kEGE24_25\\Gorbachev3v\\17.txt", 'r', encoding=None) as f:
     for line in f:
         numbers.extend(map(int, line.split()))
 

@@ -1,0 +1,2 @@
+cat "SolutionsOnSites\Codeforces\INPUT.txt" | python "SolutionsOnSites\Codeforces\tasks\file.py"
+cat "SolutionsOnSites\Codeforces\INPUT.txt" | g++ "SolutionsOnSites\Codeforces\tasks\file.cpp"

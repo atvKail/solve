@@ -63,7 +63,7 @@ def solve(data):
 
 
 def main():
-    data = read_data("USE\\kEGE24_25\\Gorbachev3v\\26.txt")
+    data = read_data("USE\\ПолноценноеРешениеВариантов\\kEGE24_25\\Gorbachev3v\\26.txt")
     result = solve(data)
     if result is not None:
         print(result[0], result[1])
