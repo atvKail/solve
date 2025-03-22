@@ -1,0 +1,1 @@
+cat "SolutionsOnSites\Codeforces\Codeforces Round 1011 (Div. 2)\INPUT.txt" | ./a.exe
