@@ -32,3 +32,5 @@ def dijkstra(graph, start, n):
 
 
 print(dijkstra(graph, 4, 7))
+
+# Оишбся, было: "7: {1: 11, 2: 8, 5: 14},", а правильно: 7: {1: 11, 2: 8, 5: 15},
