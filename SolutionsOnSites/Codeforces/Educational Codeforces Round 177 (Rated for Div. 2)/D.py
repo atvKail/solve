@@ -68,4 +68,4 @@ for _ in range(t):
     results.append(str(res))
 sys.stdout.write("\n".join(results))
 
-# solved
+# solved, решено на претестах, решение было успешно взломано, tl
