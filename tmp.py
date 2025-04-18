@@ -147,3 +147,152 @@
 #     if max_t - min_t == 415:
 #         print(n)
 #         break
+
+# def f(code: str) -> int:
+#     sz = 26
+#     ttl = 0
+
+#     for l in range(1, len(code)):
+#         ttl += sz ** l
+
+#     for i, ch in enumerate(code):
+#         power = len(code) - i - 1
+#         offset = ord(ch) - ord('A')
+#         ttl += offset * (sz ** power)
+
+#     return ttl + 1
+
+# print(f("ASFY"))
+
+
+# def get_code_by_number(n):
+#     from string import ascii_uppercase
+
+#     n -= 1
+#     l = 1
+#     ttl = 0
+
+#     while True:
+#         cnt = 26 ** l
+#         if ttl + cnt > n:
+#             break
+#         ttl += cnt
+#         l += 1
+
+#     index = n - ttl
+#     word = ""
+#     for _ in range(l):
+#         word = ascii_uppercase[index % 26] + word
+#         index //= 26
+
+#     return word
+
+
+# print(get_code_by_number(3647))
+
+
+# import string
+
+# alph = "0123456789" + string.ascii_lowercase
+
+
+# def dto15(n: int) -> list:
+#     ns = []
+#     while n > 0:
+#         ns.append(n % 15)
+#         n //= 15
+#     return ns[::-1]
+
+
+# ttl_cnt = 0
+# f = True
+# for n in range(10 ** 6):
+#     ns = dto15(n)
+#     if len(ns) > 5:
+#         break
+#     if len(ns) > 4:
+#         if f:
+#             print(n, 4)
+#             f = False
+#         if ns.count(8) == 1:
+#             cnt = 0
+#             for ln in ns:
+#                 if ln > 9:
+#                     cnt += 1
+#             if cnt >= 2:
+#                 ttl_cnt += 1
+# print(ttl_cnt)
+
+
+# import string
+
+# alph = "КОСФ"
+
+
+# def fr(n: int) -> str:
+#     n -= 1
+#     l = 1
+#     ttl = 0
+
+#     while True:
+#         cnt = 4**l
+#         if ttl + cnt > n:
+#             break
+#         ttl += cnt
+#         l += 1
+
+#     index = n - ttl
+#     word = ""
+#     for _ in range(l):
+#         word = alph[index % 4] + word
+#         index //= 4
+#     return word
+
+
+# for i in range(10**6):
+#     ns = fr(i)
+#     print(ns)
+#     if len(ns) > 4:
+#         break
+#     if len(ns) > 3:
+#         if ns == "ФОКС":
+#             print(i)
+#             break
+
+
+# from itertools import product
+
+# alph = "ФОКС"
+
+
+# cnt = 0
+# for p in product("ФОКС", repeat=5):
+#     n = p.count('Ф')
+#     print(p, n)
+#     if 0 < n < 3:
+#         cnt += 1
+# print(cnt)
+
+
+# from itertools import permutations
+
+# matrix = "247 157 47 137 27 7 123456".split()
+# graph = "ЕА ЕД АБ АЕ АД БА БВ БД ВГ ВД ВБ ДА ДБ ДЕ ДВ ДГ МД".split()
+
+# print(*range(1, 8))
+
+# for perm in permutations("АБВГДЕМ"):
+#     if all(str(perm.index(y) + 1) in matrix[perm.index(x)] for x, y in graph):
+#         print(*perm) # 37
+
+
+# from itertools import permutations
+
+# matrix = "37 46 145678 23 3 23 13 3".split()
+# graph = "БВ БА ВГ ВБ АГ АБ ГД ГВ ГА ГЖ ГЕ ГД ГК ЖГ ЖЕ КГ ДГ ЕГ ЕЖ".split()
+
+# print(*range(1, 8))
+
+# for perm in permutations("АБВГДЖЕК"):
+#     if all(str(perm.index(y) + 1) in matrix[perm.index(x)] for x, y in graph):
+#         print(*perm)
