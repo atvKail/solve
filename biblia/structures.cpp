@@ -93,9 +93,9 @@ class SegmentTree{
         if (tl == l && tr == r)
             return tree[v];
         int tm = (tl + tr) / 2;
-        int left_son = query(v*2 + 1, tl, tm, l, min(tm, r));
-        int right_son = query(v*2 + 2, tm + 1, tr, max(tm + 1, l), r);
-        return left_son + right_son;
+        int lson = query(v * 2 + 1, tl, tm, l, min(tm, r));
+        int rson = query(v * 2 + 2, tm + 1, tr, max(tm + 1, l), r);
+        return lson + rson;
     }
     
 };
