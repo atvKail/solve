@@ -1,5 +1,6 @@
 from itertools import *
 
+
 a = "356 67 145 37 13 127 246".split()
 s = "EF ED FG FC FE CF CG GF GC GB BD BA BG AB AD DE DA DB".split()
 print("1 2 3 4 5 6 7")
