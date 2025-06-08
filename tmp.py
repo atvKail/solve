@@ -44,7 +44,7 @@ for ev in events:
         _, _, ymin, ymax, idV = ev
         l = bisect.bisect_right(active, (ymin, 10**18))
         r = bisect.bisect_left(active, (ymax, -(10**18)))
-        if l < r:
+        if l < r:   
             flagV[idV] = True
             for y, idH in active[l:r]:
                 flagH[idH] = True
