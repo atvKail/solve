@@ -6,7 +6,7 @@ operations = [
 ]
 
 
-def f(heaps: list[int], h: int):
+def f(heaps: list[int], h: int) -> bool:
     if sum(heaps) <= 212 and h == 4:
         return True
     elif sum(heaps) <= 212 and h < 4:

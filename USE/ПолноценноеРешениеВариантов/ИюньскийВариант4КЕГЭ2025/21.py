@@ -20,7 +20,7 @@ def f(heaps, h):
             return any(f(op(*heaps), h + 1) for op in operations)
 
 
-def g(heaps: list[int], h: int):
+def g(heaps: list[int], h: int) -> bool:
     if sum(heaps) <= 212 and h == 3:
         return True
     elif sum(heaps) <= 212 and h < 3:
