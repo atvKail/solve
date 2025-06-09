@@ -1,3 +1,7 @@
+file_a = "USE\\Решения\\27\\21932\\27_A_21932.txt"
+file_b = "USE\\Решения\\27\\21932\\27_B_21932.txt"
+
+
 import math
 
 
@@ -43,11 +47,8 @@ def get_cluster_centers(clusters):
 
 
 def main() -> int:
-    path_A = "USE\\ПолноценноеРешениеВариантов\\ИюньскийВариант4КЕГЭ2025\\27A_22624.txt"
-    path_B = "USE\\ПолноценноеРешениеВариантов\\ИюньскийВариант4КЕГЭ2025\\27B_22624.txt"
-
-    points_A = readData(path_A)
-    points_B = readData(path_B)
+    points_A = readData(file_a)
+    points_B = readData(file_b)
 
     alpha_A = 1
     alpha_B = 1
@@ -55,23 +56,26 @@ def main() -> int:
     clusters_A = get_all_clusters(points_A, alpha_A)
     clusters_B = get_all_clusters(points_B, alpha_B)
 
-    clusters_A = [clusters_A[i] for i in range(len(clusters_A)) if len(clusters_A[i]) > 5]
-    clusters_B = [clusters_B[i] for i in range(len(clusters_B)) if len(clusters_B[i]) > 5]
-
     print("clusters A: {}".format(len(clusters_A)))
     print("clusters B: {}".format(len(clusters_B)))
 
     centers_A = get_cluster_centers(clusters_A)
     centers_B = get_cluster_centers(clusters_B)
 
+    clusters_A = [[centers_A[i], clusters_A[i]] for i in range(len(centers_A))]
+    clusters_B = [[centers_B[i], clusters_B[i]] for i in range(len(centers_B))]
+
     print(
-        int(sum([x for x, _ in centers_A]) / len(centers_A) * 10000),
-        int(sum([x for _, x in centers_A]) / len(centers_A) * 10000),
+        int(min(clusters_A, key=lambda x: len(x[1]))[0][0] * 10000),
+        int(max(clusters_A, key=lambda x: len(x[1]))[0][1] * 10000),
     )
     print(
-        int(sum([x for x, _ in centers_B]) / len(centers_B) * 10000),
-        int(sum([x for _, x in centers_B]) / len(centers_B) * 10000),
+        int(min(clusters_B, key=lambda x: len(x[1]))[0][0] * 10000),
+        int(max(clusters_B, key=lambda x: len(x[1]))[0][1] * 10000),
     )
+
+
+1
 
 
 if __name__ == "__main__":

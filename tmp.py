@@ -44,7 +44,7 @@
 #         _, _, ymin, ymax, idV = ev
 #         l = bisect.bisect_right(active, (ymin, 10**18))
 #         r = bisect.bisect_left(active, (ymax, -(10**18)))
-#         if l < r:   
+#         if l < r:
 #             flagV[idV] = True
 #             for y, idH in active[l:r]:
 #                 flagH[idH] = True
@@ -56,15 +56,56 @@
 # print(ans)
 
 
-def ntod(x: str, n: int) -> int:
-    import string
-    alph = "0123456789" + string.ascii_uppercase
-    num = list(x)
-    dnum = sum(alph.index(num[i]) * n**(len(num) - i - 1) \
-               for i in range(len(num)))
-    return dnum
+# def ntod(x: str, n: int) -> int:
+#     import string
+
+#     alph = "0123456789" + string.ascii_uppercase
+#     num = list(x)
+#     dnum = sum(alph.index(num[i]) * n ** (len(num) - i - 1) for i in range(len(num)))
+#     return dnum
 
 
-print(ntod('2N04', 36))
+# print(ntod("2N04", 36))
 
-print(2 & 1 == 0)
+# print(2 & 1 == 0)
+
+
+# def dbscan(points, eps, min_pts):
+#     labels = [None] * len(points)
+#     cluster_id = 0
+#     for i in range(len(points)):
+#         if labels[i] is not None:
+#             continue
+
+#         neighbors = []
+#         for j in range(len(points)):
+#             dx = points[i][0] - points[j][0]
+#             dy = points[i][1] - points[j][1]
+#             if dx * dx + dy * dy <= eps * eps:
+#                 neighbors.append(j)
+
+#         if len(neighbors) < min_pts:
+#             labels[i] = -1
+#         else:
+#             cluster_id += 1
+#             labels[i] = cluster_id
+#             k = 0
+
+#             while k < len(neighbors):
+#                 j = neighbors[k]
+#                 if labels[j] == -1:
+#                     labels[j] = cluster_id
+#                 if labels[j] is None:
+#                     labels[j] = cluster_id
+
+#                     new_neighbors = []
+#                     for m in range(len(points)):
+#                         dx = points[j][0] - points[m][0]
+#                         dy = points[j][1] - points[m][1]
+#                         if dx * dx + dy * dy <= eps * eps:
+#                             new_neighbors.append(m)
+
+#                     if len(new_neighbors) >= min_pts:
+#                         neighbors += new_neighbors
+#                 k += 1
+#     return labels
