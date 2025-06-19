@@ -110,3 +110,40 @@
 #                 k += 1
 #     return labels
 
+
+# import os
+
+
+# source_root = "/путь/к/родительской/папке"
+# destination_folder = "/путь/к/папке/назначения"
+
+# video_extensions = {'.mp4', '.avi', '.mkv', '.mov', '.webm', '.flv'}
+
+# if not os.path.exists(destination_folder):
+#     os.makedirs(destination_folder)
+
+# for current_dir, dirs, files in os.walk(source_root):
+#     for file in files:
+#         _, ext = os.path.splitext(file)
+#         if ext.lower() in video_extensions:
+#             source_path = os.path.join(current_dir, file)
+#             dest_path = os.path.join(destination_folder, file)
+
+#             base_name, ext = os.path.splitext(file)
+#             counter = 1
+#             while os.path.exists(dest_path):
+#                 new_name = f"{base_name}_{counter}{ext}"
+#                 dest_path = os.path.join(destination_folder, new_name)
+#                 counter += 1
+
+#             with open(source_path, 'rb') as fsrc:
+#                 with open(dest_path, 'wb') as fdst:
+#                     while True:
+#                         buf = fsrc.read(1024 * 1024) # Корочь по 1 меби байту
+#                         if not buf:
+#                             break
+#                         fdst.write(buf)
+
+#             print(f"Скопировано: {source_path} -> {dest_path}")
+
+# print("Завершено.")

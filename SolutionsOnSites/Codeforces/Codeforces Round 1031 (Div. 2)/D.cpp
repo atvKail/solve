@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define forn(i, l, r) for (int i = l; i < r; ++i)
+#define forn(i, l, r) for(int i = l; i < r; ++i)
 #define all(a) (a).begin(), (a).end()
 #define f first
 #define s second
@@ -11,49 +11,67 @@ using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
 using vi = vector<int>;
+using vll = vector<ll>;
 using vvi = vector<vi>;
+using vvll = vector<vll>;
 
-int simulate(const vi& a, const vi& b, int n){
-    deque<int> pa(all(a)), pb(all(b));
-    int score = 0;
-    forn(i, 0, n){
-        int x = pa.front(), y = pb.front();
-        pa.pop_front(); 
-        pb.pop_front();
-        if(x > y){
-            score++;
-            pb.push_front(y);
+int cntwins(const vi &a, const vi &b){
+    int n = a.size();
+    int i = 0, j = 0, wins = 0;
+    forn(k, 0, n){
+        if(a[i] > b[j]){
+            wins++;
+            i++;
         } else{
-            pa.push_front(x);
+            j++;
         }
     }
-    return score;
+    return wins;
 }
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t; 
+    int t;
     cin >> t;
-    while (t--){
+    while(t--){
         int n;
         cin >> n;
         vi a(n), b(n);
         forn(i, 0, n) cin >> a[i];
         forn(i, 0, n) cin >> b[i];
 
-        int max_score = simulate(a, b, n);
-
-        forn(i, 0, n) forn(j, i + 1, n){
-            vi a_sw = a;
-            swap(a_sw[i], a_sw[j]);
-            max_score = max(max_score, simulate(a_sw, b, n));
+        vi pref_min(n);
+        pref_min[0] = 0;
+        forn(i, 1, n){
+            pref_min[i] = pref_min[i-1];
+            if(a[i] < a[pref_min[i-1]])
+                pref_min[i] = i;
+        }
+        vi suf_max(n);
+        suf_max[n-1] = n-1;
+        for(int i = n-2; i >= 0; --i){
+            suf_max[i] = suf_max[i+1];
+            if(a[i] > a[suf_max[i+1]])
+                suf_max[i] = i;
         }
 
-        cout << max_score << "\n";
+        int cur = cntwins(a, b);
+        int lo = cur, hi = n;
+        while(hi - lo > 1){
+            int mid = lo + (hi - lo) / 2;
+            int lpos = pref_min[mid-1];
+            int rpos = suf_max[mid];
+            swap(a[lpos], a[rpos]);
+            int cw = cntwins(a, b);
+            swap(a[lpos], a[rpos]);
+            if(cw >= mid) lo = mid;
+            else hi = mid;
+        }
+        cout << lo << '\n';
     }
     return 0;
 }
 
-// TL 4
+// SOLVED
