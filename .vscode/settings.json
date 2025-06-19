@@ -94,5 +94,6 @@
         "__nullptr": "cpp",
         "climits": "cpp"
     },
-    "C_Cpp.default.compilerPath": "c:\\MinGW\\bin\\gcc.exe"
+    "C_Cpp.default.compilerPath": "c:\\MinGW\\bin\\gcc.exe",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
