@@ -3,7 +3,11 @@ package _4e1owek.solutions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+import _4e1owek.LoggingExtension;
+
+@ExtendWith(LoggingExtension.class)
 public class ProblemN5Test {
     private final ProblemN5 sol = new ProblemN5();
 
