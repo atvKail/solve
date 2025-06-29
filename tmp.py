@@ -147,3 +147,55 @@
 #             print(f"Скопировано: {source_path} -> {dest_path}")
 
 # print("Завершено.")
+
+
+# import requests
+
+
+# req = requests.get("http://kslweb1.spb.ctf.su/second/level23/")
+# s = req.text.split()
+# for i in range(1337):
+#     req = requests.get("http://kslweb1.spb.ctf.su/second/level23/", headers={"Cookie":s[16]})
+#     s = req.text.split()
+#     if i % 10 == 0:
+#         print(i)
+# print(s)
+
+
+# import hashlib
+# import itertools
+# import string
+# from datetime import datetime
+
+
+# def brute_force_sha256(target_hash, max_length=5, chars=string.printable.strip()):
+#     start_time = datetime.now()
+#     print(f"Начало брутфорса SHA-256 в {start_time}")
+#     print(f"Перебираем строки длиной до {max_length} символов")
+#     print(f"Используемый набор символов: {chars}\n")
+
+#     for length in range(1, max_length + 1):
+#         print(f"Проверяем строки длиной {length}...")
+#         for candidate in itertools.product(chars, repeat=length):
+#             candidate = "".join(candidate)
+#             candidate_hash = hashlib.sha256(candidate.encode("utf-8")).hexdigest()
+
+#             if candidate_hash == target_hash:
+#                 end_time = datetime.now()
+#                 duration = end_time - start_time
+#                 print(f"\nНайдено совпадение!")
+#                 print(f"Исходная строка: {candidate}")
+#                 print(f"Хэш SHA-256: {candidate_hash}")
+#                 print(f"Время поиска: {duration}")
+#                 return candidate
+
+#         print(f"Перебор строк длиной {length} завершен. Совпадений не найдено.")
+
+#     end_time = datetime.now()
+#     duration = end_time - start_time
+#     print(f"Общее время поиска: {duration}")
+#     return None
+
+
+# target_hash = "a21855da08cb102d1d217c53dc5824a3a795c1c1a44e971bf01ab9da3a2acbbf"
+# brute_force_sha256(target_hash, max_length=25)
